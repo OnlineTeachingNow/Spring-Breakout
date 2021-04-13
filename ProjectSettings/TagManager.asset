@@ -11,12 +11,12 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - background
+  - foreground
+  - furnishings
+  - collectibles
+  - player
+  - camera
   - 
   - 
   - 
@@ -52,4 +52,7 @@ TagManager:
     locked: 0
   - name: collectibles
     uniqueID: 324881005
+    locked: 0
+  - name: player
+    uniqueID: 115132235
     locked: 0

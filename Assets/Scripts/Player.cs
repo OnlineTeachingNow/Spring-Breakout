@@ -15,22 +15,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        //Walk();
-        WalkAgain();
+        Walk();
     }
 
-    private void WalkAgain()
+    private void Walk()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
         _verticalInput = Input.GetAxis("Vertical");
         Vector2 _playerVelocity = new Vector2(_horizontalInput, _verticalInput) * _moveSpeed;
         _myRigidBody.velocity = _playerVelocity;
-    }
-    private void Walk()
-    {
-        _horizontalInput = Input.GetAxis("Horizontal");
-        _verticalInput = Input.GetAxis("Vertical");
-        this.transform.Translate(new Vector3(_horizontalInput, _verticalInput, 0) * _moveSpeed * Time.deltaTime);
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

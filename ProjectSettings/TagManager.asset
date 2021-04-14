@@ -12,13 +12,13 @@ TagManager:
   - Water
   - UI
   - background
-  - foreground
+  - foreground collision
   - furnishings
   - collectibles
   - player
   - camera
-  - 
-  - 
+  - foreground no collision
+  - enemy
   - 
   - 
   - 
@@ -44,15 +44,21 @@ TagManager:
   - name: background
     uniqueID: 345085785
     locked: 0
-  - name: foreground
+  - name: player
+    uniqueID: 115132235
+    locked: 0
+  - name: enemy
+    uniqueID: 2730293075
+    locked: 0
+  - name: foreground collision
     uniqueID: 1740700595
+    locked: 0
+  - name: foreground no collision
+    uniqueID: 3364207667
     locked: 0
   - name: furnishings
     uniqueID: 1236914809
     locked: 0
   - name: collectibles
     uniqueID: 324881005
-    locked: 0
-  - name: player
-    uniqueID: 115132235
     locked: 0

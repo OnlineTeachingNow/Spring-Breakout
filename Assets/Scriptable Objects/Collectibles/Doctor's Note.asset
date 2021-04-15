@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac98ae90b5ed1941be685f3e608ff8f, type: 3}
+  m_Name: Doctor's Note
+  m_EditorClassIdentifier: 
+  _name: Doctor's Note
+  _description: Trick all security guards in the vicinity with this forged doctor's
+    note. But you better hurry before they find out it's a fake...
+  _sprite: {fileID: 21300000, guid: 2126b3dc9d5ac76419e8c1d7133ec8eb, type: 3}
+  _distractionTime: 10
+  _distractsAllEnemies: 1
+  _healthValue: 0
+  _socialValue: 0
+  _costToUse: 150

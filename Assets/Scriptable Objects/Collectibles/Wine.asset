@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ac98ae90b5ed1941be685f3e608ff8f, type: 3}
+  m_Name: Wine
+  m_EditorClassIdentifier: 
+  _name: Wine
+  _description: Delight your friends with this party favorite or eliminate boredom
+    with an en route pregame. Just be careful of the effects...
+  _sprite: {fileID: 21300000, guid: bf038f2a5bfb24246a49ab9574937538, type: 3}
+  _distractionTime: 5
+  _distractsAllEnemies: 0
+  _healthValue: 0
+  _socialValue: 300
+  _costToUse: 300

@@ -25,9 +25,4 @@ public class Player : MonoBehaviour
         Vector2 _playerVelocity = new Vector2(_horizontalInput, _verticalInput) * _moveSpeed;
         _myRigidBody.velocity = _playerVelocity;
     }
-
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        Debug.Log("In collision");
-    }
 }

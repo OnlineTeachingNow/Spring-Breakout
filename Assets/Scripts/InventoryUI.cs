@@ -5,20 +5,39 @@ using UnityEngine.UI;
 
 public class InventoryUI : MonoBehaviour
 {
+    Button[] _childrenColors;
 
     // Start is called before the first frame update
     void Start()
     {
-        Button[] childrenColors = gameObject.GetComponentsInChildren<Button>();
-        foreach (var child in childrenColors)
+        _childrenColors = gameObject.GetComponentsInChildren<Button>();
+        foreach (var child in _childrenColors)
         {
-            child.GetComponent<Image>().color = new Color(85, 76, 76);
+            //Debug.Log(child.name);
+            child.GetComponent<Image>().color = new Color32(85, 76, 76, 255);
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void AddInventory(string objectTag)
     {
-        
+        foreach (var child in _childrenColors)
+        {
+            if (child.tag == objectTag)
+            {
+                child.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+            }
+        }
     }
+
+    public void TakeAwayInventory(string objectTag)
+    {
+        foreach (var child in _childrenColors)
+        {
+            if (child.tag == objectTag)
+            {
+                child.GetComponent<Image>().color = new Color32(85, 76, 76, 255);
+            }
+        }
+    }
+
 }

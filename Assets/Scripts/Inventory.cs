@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class Inventory : MonoBehaviour
 {
-    private List<GameObject> _myInventory = new List<GameObject>();
-    public bool AddInventoryItem(GameObject thisObject)
+    private List<string> _myInventory = new List<string>();
+    public bool AddInventoryItem(string thisTag)
     {
         bool _pickedUpItem = false;
         if (_myInventory.Count < 2)
         {
-            if (!_myInventory.Contains(thisObject))
+            if (!_myInventory.Contains(thisTag))
             {
-                _myInventory.Add(thisObject);
+                _myInventory.Add(thisTag);
                 _pickedUpItem = true;
             }
             else
@@ -28,7 +28,7 @@ public class Inventory : MonoBehaviour
         }
         foreach (var item in _myInventory)
         {
-            Debug.Log("in Inventory: " + thisObject.name);
+           // Debug.Log(item);
         }
         return _pickedUpItem;
 

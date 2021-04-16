@@ -14,7 +14,7 @@ public class CollectibleGameObject : MonoBehaviour
         if (other.tag == "player")
         {
             Debug.Log("collision");
-            bool _pickedUpObject = _thisInventory.AddInventoryItem(this.gameObject);
+            bool _pickedUpObject = _thisInventory.AddInventoryItem(this.gameObject.tag);
             if (_pickedUpObject)
             {
                 Destroy(this.gameObject);

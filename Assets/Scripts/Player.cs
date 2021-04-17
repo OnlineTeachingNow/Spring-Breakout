@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     {
         Walk();
     }
-
     private void Walk()
     {
         _horizontalInput = Input.GetAxis("Horizontal");
@@ -29,7 +28,7 @@ public class Player : MonoBehaviour
 
     public void ThrowObject(string gameObjectTag)
     {
-        
+
         for (int collectibleIndex = 0; collectibleIndex < _objectsToThrow.Length; collectibleIndex++)
         {
             if (gameObjectTag == _objectsToThrow[collectibleIndex].tagOfObject)
@@ -43,6 +42,14 @@ public class Player : MonoBehaviour
                 Debug.Log("object tag: " + _objectsToThrow[collectibleIndex].tagOfObject);
                 Debug.Log("no game object matches.");
             }
+        }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.tag == "enemy")
+        {
+            FindObjectOfType<MenuManager>().PlayerDeath();
         }
     }
 }

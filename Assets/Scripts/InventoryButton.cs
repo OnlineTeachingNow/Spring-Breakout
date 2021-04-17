@@ -21,7 +21,6 @@ public class InventoryButton : MonoBehaviour
             _imageToDisable.SetActive(isImageEnabled);
             _oneInformationEnabled = true;
             Time.timeScale = 0;
-            Debug.Log(Time.timeScale);
         }
         else if (_oneInformationEnabled == true && isImageEnabled == true)
         {

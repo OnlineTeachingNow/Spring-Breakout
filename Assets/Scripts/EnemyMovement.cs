@@ -10,8 +10,10 @@ public class EnemyMovement : MonoBehaviour
     List<Transform> _waypoints;
     bool _hasWaypoints = false;
     int _waypointIndex = 0;
-    bool _hasSeenPlayer = false;
-    Transform _playerPosition;
+    bool _hasSeenObject = false;
+    string _objectTag; 
+    Transform _positionOfObjectToPursue;
+    List<Transform> _objectsToPursue = new List<Transform>();
     Vector2 _enemyDirection;
 
     void Start()
@@ -22,13 +24,13 @@ public class EnemyMovement : MonoBehaviour
 
     void Update()
     {
-        if (_hasSeenPlayer == false)
+        if (_hasSeenObject == false)
         {
             WayPointMovement();
         }
         else
         {
-            MoveTowardsPlayer();
+            PursueObject();
         }
 
         //if no player in sight
@@ -62,11 +64,11 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void HasSeenPlayer(Transform playerPosition)
+    public void HasSeenObjectToPursue(Transform objectPosition)
     {
-        _playerPosition = playerPosition;
-        _hasSeenPlayer = true;
-        Debug.Log("has seen player");
+        _positionOfObjectToPursue = objectPosition;
+        _hasSeenObject = true;
+        Debug.Log("has seen object to pursue");
     }
 
     
@@ -76,9 +78,35 @@ public class EnemyMovement : MonoBehaviour
     }
     
 
-    private void MoveTowardsPlayer()
+    private void PursueObject()
     {
-        this.transform.position = Vector2.MoveTowards(this.transform.position, _playerPosition.position, _moveSpeed * Time.deltaTime);
+        if (_positionOfObjectToPursue != null)
+        {
+            this.transform.position = Vector2.MoveTowards(this.transform.position, _positionOfObjectToPursue.position, _moveSpeed * Time.deltaTime);
+        }
+        else
+        {
+            _hasSeenObject = false;
+        }
+        /*
+        Debug.Log("Number of objects to pursue" + _objectsToPursue.Count);
+        if (_objectsToPursue.Count == 1)
+        {
+            this.transform.position = Vector2.MoveTowards(this.transform.position, _objectsToPursue[0].position, _moveSpeed * Time.deltaTime);
+        }
+        else if (_objectsToPursue.Count > 1)
+        {
+            for (int pursueObjectIndex = 0; pursueObjectIndex < _objectsToPursue.Count; pursueObjectIndex++)
+            {
+                if (_objectsToPursue[pursueObjectIndex].tag == "player")
+                {
+                    _objectsToPursue.RemoveAt(pursueObjectIndex);
+                    _objectsToPursue.Add(_objectsToPursue[pursueObjectIndex]);
+                }
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _objectsToPursue[pursueObjectIndex].position, _moveSpeed * Time.deltaTime);
+            }
+        }   
+        */
     }
 
     public void SetWaypoints(List<Transform> waypoints)

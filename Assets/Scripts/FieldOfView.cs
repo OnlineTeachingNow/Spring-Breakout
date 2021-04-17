@@ -24,7 +24,6 @@ public class FieldOfView : MonoBehaviour
         {
             _enemyVelocity = GetComponent<EnemyMovement>().GetEnemyVelocity();
             yield return new WaitForSeconds(delay);
-
             FindVisibleTargets();
         }
     }
@@ -41,7 +40,7 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, _dirToTarget, _dstToTarget, _obstacleMask))
                 {
-                    GetComponent<EnemyMovement>().HasSeenPlayer(_target);
+                    GetComponent<EnemyMovement>().HasSeenObjectToPursue(_target);
                 }
             }
         }

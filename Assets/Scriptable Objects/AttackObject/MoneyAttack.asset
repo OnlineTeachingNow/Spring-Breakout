@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b29ede5533bdc44aa0e8f1e7154e0a7, type: 3}
   m_Name: MoneyAttack
   m_EditorClassIdentifier: 
-  _distractionTime: 10
+  _distractionTime: 5
   _costToUse: 200
   _sprite: {fileID: -4824736260732608385, guid: 52da834a35519d34d8a267a832d85788, type: 3}
   tagOfObject: money

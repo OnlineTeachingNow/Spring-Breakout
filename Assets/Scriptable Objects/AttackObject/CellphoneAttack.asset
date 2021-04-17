@@ -15,3 +15,4 @@ MonoBehaviour:
   _distractionTime: 5
   _costToUse: 100
   _sprite: {fileID: -3379045871897808515, guid: 691c3bad85b8b4c4191a4782d7486d0d, type: 3}
+  tagOfObject: cellphone

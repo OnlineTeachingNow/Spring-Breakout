@@ -15,3 +15,4 @@ MonoBehaviour:
   _distractionTime: 20
   _costToUse: 400
   _sprite: {fileID: 4060466285325566714, guid: 33e3493c8a5da4f42bd65c20f985a2ac, type: 3}
+  tagOfObject: wine

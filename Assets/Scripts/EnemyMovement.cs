@@ -47,7 +47,6 @@ public class EnemyMovement : MonoBehaviour
                 Vector3 _firstLocation = this.transform.position; 
                 this.transform.position = Vector2.MoveTowards(this.transform.position, _waypoints[_waypointIndex].transform.position, _moveSpeed * Time.deltaTime);
                 _enemyDirection = (this.transform.position - _firstLocation).normalized;
-                Debug.Log("moving towards waypoints");
             }
             else
             {

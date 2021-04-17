@@ -15,3 +15,4 @@ MonoBehaviour:
   _distractionTime: 15
   _costToUse: 300
   _sprite: {fileID: -2412581267364319831, guid: 7e57449425ac04b47a77d49241475028, type: 3}
+  tagOfObject: doctorsnote

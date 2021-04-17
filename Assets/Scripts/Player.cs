@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 2;
-    [SerializeField] GameObject[] _objectsToThrow;
+    [SerializeField] ScriptableAttackObject[] _objectsToThrow;
     float _horizontalInput;
     float _verticalInput;
     Rigidbody2D _myRigidBody;
@@ -27,17 +27,21 @@ public class Player : MonoBehaviour
         _myRigidBody.velocity = _playerVelocity;
     }
 
-    public void ThrowObject(string gameObject)
+    public void ThrowObject(string gameObjectTag)
     {
         
-        Debug.Log("Game objects passed into Player: " + gameObject);
         for (int collectibleIndex = 0; collectibleIndex < _objectsToThrow.Length; collectibleIndex++)
         {
-            if (gameObject == _objectsToThrow[collectibleIndex].tag)
+            if (gameObjectTag == _objectsToThrow[collectibleIndex].tagOfObject)
             {
-                Debug.Log("Game object tag found");
-                Instantiate(_objectsToThrow[collectibleIndex], this.transform.position, Quaternion.identity);
+                var _newObject = Instantiate(_objectsToThrow[collectibleIndex]._sprite, this.transform.position, Quaternion.identity);
+                _newObject.SetDistractionTime(_objectsToThrow[collectibleIndex].ReturnDistractionTime()); //passes in the distraction time from scriptable object
                 break;
+            }
+            else
+            {
+                Debug.Log("object tag: " + _objectsToThrow[collectibleIndex].tagOfObject);
+                Debug.Log("no game object matches.");
             }
         }
     }

@@ -4,24 +4,42 @@ using UnityEngine;
 
 public class AttackObject : MonoBehaviour
 {
+    SpriteRenderer _thisSprite;
+    float _distractionTime;
+    private void Start()
+    {
+        _thisSprite = GetComponent<SpriteRenderer>();
+        Debug.Log(_distractionTime);
+    }
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.tag == "enemy")
         {
-          //  StartCoroutine(DistractEnemies());
+            StartCoroutine(DistractEnemies());
         }
     }
 
-    /*
+    
     private IEnumerator DistractEnemies()
     {
-        while(Time.deltaTime < enemyattacktime(fromscriptableobject))
-    this.GetComponent<SpriteRenderer>().color.a = 0f;
-    yield return new WaitForSeconds(0.1f);
-        this.GetComponent<SpriteRenderer>().color.a = 1f;
+        float timePassed = 0;
+        while (timePassed < _distractionTime)
+        {
+            var currentTime = Time.time;
+            _thisSprite.enabled = false;
+            yield return new WaitForSeconds(0.3f);
+            _thisSprite.enabled = true;
+            yield return new WaitForSeconds(0.3f);
+            timePassed += Time.time - currentTime;
+            Debug.Log("Time Passed: " + timePassed);
+        }
+        Destroy(this.gameObject);
     }
 
-    */
+    public void SetDistractionTime(float distractionTime)
+    {
+        _distractionTime = distractionTime;
+    }
 
 
     /*

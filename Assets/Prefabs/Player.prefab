@@ -101,10 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _moveSpeed: 3
   _objectsToThrow:
-  - {fileID: 3844386581963011132, guid: 691c3bad85b8b4c4191a4782d7486d0d, type: 3}
-  - {fileID: 5348800564885275825, guid: 7e57449425ac04b47a77d49241475028, type: 3}
-  - {fileID: 1710268403425491718, guid: 52da834a35519d34d8a267a832d85788, type: 3}
-  - {fileID: 7918683700087511732, guid: 33e3493c8a5da4f42bd65c20f985a2ac, type: 3}
+  - {fileID: 11400000, guid: b24b158b30240764aafefeed811af991, type: 2}
+  - {fileID: 11400000, guid: 91fc2c75bfc433b42a0c579309ac0d49, type: 2}
+  - {fileID: 11400000, guid: dcc92c462edbc3c489f4327fa3ed0100, type: 2}
+  - {fileID: 11400000, guid: 3dc88ba17abd00c4bb30e69c7d703ad1, type: 2}
 --- !u!50 &5008573146138650553
 Rigidbody2D:
   serializedVersion: 4

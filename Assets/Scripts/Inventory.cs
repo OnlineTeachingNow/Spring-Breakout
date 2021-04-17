@@ -46,7 +46,6 @@ public class Inventory : MonoBehaviour
 
     public void DiscardItem(string discardTag)
     {
-        Debug.Log("value passed in: " + discardTag);
         if (_myInventory.Count > 0)
         {
             _player.ThrowObject(discardTag);

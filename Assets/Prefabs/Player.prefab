@@ -100,10 +100,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _moveSpeed: 3
-  _wine: {fileID: 7918683700087511735, guid: c15037a0bf2186741948ac6a2300a953, type: 3}
-  _cellphone: {fileID: 3844386581963011135, guid: 3f9b954b099863b4e870716275c860c2, type: 3}
-  _doctorsNote: {fileID: 5348800564885275826, guid: c52c5d0d1a6bd2e428ff2f91e27f2b02, type: 3}
-  _money: {fileID: 1710268403425491717, guid: 7a61942c4d26ebc458479adf2e4c4e41, type: 3}
+  _objectsToThrow:
+  - {fileID: 3844386581963011132, guid: 691c3bad85b8b4c4191a4782d7486d0d, type: 3}
+  - {fileID: 5348800564885275825, guid: 7e57449425ac04b47a77d49241475028, type: 3}
+  - {fileID: 1710268403425491718, guid: 52da834a35519d34d8a267a832d85788, type: 3}
+  - {fileID: 7918683700087511732, guid: 33e3493c8a5da4f42bd65c20f985a2ac, type: 3}
 --- !u!50 &5008573146138650553
 Rigidbody2D:
   serializedVersion: 4

@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 0.1f;
+    [SerializeField] float _moveSpeed = 5f;
     Player _player;
     Rigidbody2D _myRigidBody;
     List<Transform> _waypoints;
@@ -45,7 +45,7 @@ public class EnemyMovement : MonoBehaviour
             if (Mathf.Abs((this.transform.position - _waypoints[_waypointIndex].transform.position).magnitude) > 0.08)
             {
                 Vector3 _firstLocation = this.transform.position; 
-                this.transform.position = Vector2.MoveTowards(this.transform.position, _waypoints[_waypointIndex].transform.position, _moveSpeed);
+                this.transform.position = Vector2.MoveTowards(this.transform.position, _waypoints[_waypointIndex].transform.position, _moveSpeed * Time.deltaTime);
                 _enemyDirection = (this.transform.position - _firstLocation).normalized;
                 Debug.Log("moving towards waypoints");
             }
@@ -79,7 +79,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void MoveTowardsPlayer()
     {
-        this.transform.position = Vector2.MoveTowards(this.transform.position, _playerPosition.position, 0.05f);
+        this.transform.position = Vector2.MoveTowards(this.transform.position, _playerPosition.position, _moveSpeed * Time.deltaTime);
     }
 
     public void SetWaypoints(List<Transform> waypoints)

@@ -16,8 +16,8 @@ MonoBehaviour:
   _description: Get directions to your party or throw it down to distract a guard.
     But be careful, everyone knows that too much screen time isn't good for you...
   _sprite: {fileID: 21300000, guid: c5f2117e440c403438a81166fb27cb39, type: 3}
-  _distractionTime: 10
+  _distractionTime: 5
   _distractsAllEnemies: 0
   _healthValue: 0
   _socialValue: 0
-  _costToUse: 50
+  _costToUse: 100

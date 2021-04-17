@@ -9,6 +9,7 @@ TagManager:
   - wine
   - money
   - cellphone
+  - enemy
   layers:
   - Default
   - TransparentFX
@@ -24,7 +25,7 @@ TagManager:
   - camera
   - foreground no collision
   - enemy
-  - 
+  - attackobject
   - 
   - 
   - 
@@ -54,6 +55,9 @@ TagManager:
     locked: 0
   - name: enemy
     uniqueID: 2730293075
+    locked: 0
+  - name: attackObject
+    uniqueID: 373846559
     locked: 0
   - name: foreground collision
     uniqueID: 1740700595

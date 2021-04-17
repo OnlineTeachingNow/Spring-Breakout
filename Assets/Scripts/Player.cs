@@ -5,7 +5,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     [SerializeField] float _moveSpeed = 2;
-    [SerializeField] CollectibleGameObject[] _objectsToThrow;
+    [SerializeField] GameObject[] _objectsToThrow;
     float _horizontalInput;
     float _verticalInput;
     Rigidbody2D _myRigidBody;
@@ -29,22 +29,16 @@ public class Player : MonoBehaviour
 
     public void ThrowObject(string gameObject)
     {
-        GameObject _newObject = GameObject.FindGameObjectWithTag(gameObject);
-        Debug.Log("new object name: " + _newObject);
-        GameObject _instantiatedObject = Instantiate(_newObject, this.transform.position, Quaternion.identity);
-        _instantiatedObject.IsAttackObject(true);
-        /*
+        
         Debug.Log("Game objects passed into Player: " + gameObject);
         for (int collectibleIndex = 0; collectibleIndex < _objectsToThrow.Length; collectibleIndex++)
         {
             if (gameObject == _objectsToThrow[collectibleIndex].tag)
             {
                 Debug.Log("Game object tag found");
-
-                //_newObject.IsAttackObject(true);
+                Instantiate(_objectsToThrow[collectibleIndex], this.transform.position, Quaternion.identity);
                 break;
             }
         }
-        */
     }
 }

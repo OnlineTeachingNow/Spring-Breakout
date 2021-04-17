@@ -13,7 +13,7 @@ public class InventoryUI : MonoBehaviour
         _childrenColors = gameObject.GetComponentsInChildren<Button>();
         foreach (var child in _childrenColors)
         {
-            //Debug.Log(child.name);
+            child.enabled = false;
             child.GetComponent<Image>().color = new Color32(85, 76, 76, 255);
         }
     }
@@ -24,6 +24,7 @@ public class InventoryUI : MonoBehaviour
         {
             if (child.tag == objectTag)
             {
+                child.enabled = true;
                 child.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
             }
         }
@@ -36,6 +37,7 @@ public class InventoryUI : MonoBehaviour
             if (child.tag == objectTag)
             {
                 child.GetComponent<Image>().color = new Color32(85, 76, 76, 255);
+                child.enabled = false;
             }
         }
     }

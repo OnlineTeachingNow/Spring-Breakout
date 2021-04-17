@@ -20,4 +20,4 @@ MonoBehaviour:
   _distractsAllEnemies: 1
   _healthValue: 0
   _socialValue: 200
-  _costToUse: 100
+  _costToUse: 150

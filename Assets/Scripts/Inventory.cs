@@ -50,7 +50,9 @@ public class Inventory : MonoBehaviour
         if (_myInventory.Count > 0)
         {
             _player.ThrowObject(discardTag);
+            _inventoryUI.TakeAwayInventory(discardTag);
             _myInventory.Remove(discardTag);
+
         }
         else
         {

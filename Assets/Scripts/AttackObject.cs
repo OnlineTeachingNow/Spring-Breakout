@@ -6,6 +6,8 @@ public class AttackObject : MonoBehaviour
 {
     SpriteRenderer _thisSprite;
     float _distractionTime;
+    List<EnemyMovement> _enemiesInCollision = new List<EnemyMovement>();
+    EnemyMovement _enemy;
     private void Start()
     {
         _thisSprite = GetComponent<SpriteRenderer>();
@@ -15,10 +17,12 @@ public class AttackObject : MonoBehaviour
     {
         if (other.tag == "enemy")
         {
+            _enemy = other.GetComponent<EnemyMovement>();
+            _enemiesInCollision.Add(_enemy);
+            _enemy.SetMoveSpeed(0.0f);
             StartCoroutine(DistractEnemies());
         }
     }
-
     
     private IEnumerator DistractEnemies()
     {
@@ -32,6 +36,10 @@ public class AttackObject : MonoBehaviour
             yield return new WaitForSeconds(0.3f);
             timePassed += Time.time - currentTime;
             Debug.Log("Time Passed: " + timePassed);
+        }
+        foreach(var enemy in _enemiesInCollision)
+        {
+            enemy.SetMoveSpeed(5.0f);
         }
         Destroy(this.gameObject);
     }

@@ -22,6 +22,11 @@ public class EnemyMovement : MonoBehaviour
         _myRigidBody = GetComponent<Rigidbody2D>();
     }
 
+    public void SetMoveSpeed(float movespeed)
+    {
+        _moveSpeed = movespeed;
+    }
+
     void Update()
     {
         if (_hasSeenObject == false)

@@ -11,6 +11,8 @@ public class FieldOfView : MonoBehaviour
     public LayerMask _layerMask; 
     public LayerMask _obstacleMask;
 
+    public List<Transform> _visibleTargets = new List<Transform>();
+
     Vector2 _enemyVelocity;
 
     private void Start()
@@ -29,6 +31,7 @@ public class FieldOfView : MonoBehaviour
     }
     void FindVisibleTargets()
     {
+        _visibleTargets.Clear();
         Collider2D[] _targetsInViewRadius = Physics2D.OverlapCircleAll(transform.position, _viewRadius, _layerMask); //Checks only for objects in the layers
         for (int i = 0; i < _targetsInViewRadius.Length; i++)
         {
@@ -40,7 +43,15 @@ public class FieldOfView : MonoBehaviour
 
                 if (!Physics2D.Raycast(transform.position, _dirToTarget, _dstToTarget, _obstacleMask))
                 {
-                    GetComponent<EnemyMovement>().HasSeenObjectToPursue(_target);
+                    _visibleTargets.Add(_target);
+                    if (_target.tag != "player")
+                    {
+                        GetComponent<EnemyMovement>().HasSeenObjectToPursue(_target);
+                    }
+                    else
+                    {
+                        GetComponent<EnemyMovement>().HasSeenObjectToPursue(_target);
+                    }
                 }
             }
         }

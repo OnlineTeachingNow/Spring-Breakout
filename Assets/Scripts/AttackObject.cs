@@ -5,13 +5,17 @@ using UnityEngine;
 public class AttackObject : MonoBehaviour
 {
     SpriteRenderer _thisSprite;
+    [SerializeField] int _objectValue = 100;
+    MenuManager _menuManager;
     float _distractionTime;
     List<EnemyMovement> _enemiesInCollision = new List<EnemyMovement>();
     EnemyMovement _enemy;
     private void Start()
     {
+        _menuManager = FindObjectOfType<MenuManager>();
+        _menuManager.DetractPoints(_objectValue);
         _thisSprite = GetComponent<SpriteRenderer>();
-        Debug.Log(_distractionTime);
+        //Debug.Log(_distractionTime);
     }
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -35,7 +39,7 @@ public class AttackObject : MonoBehaviour
             _thisSprite.enabled = true;
             yield return new WaitForSeconds(0.3f);
             timePassed += Time.time - currentTime;
-            Debug.Log("Time Passed: " + timePassed);
+            //Debug.Log("Time Passed: " + timePassed);
         }
         foreach(var enemy in _enemiesInCollision)
         {
@@ -49,7 +53,10 @@ public class AttackObject : MonoBehaviour
         _distractionTime = distractionTime;
     }
 
-
+    public int GetObjectValue()
+    {
+        return _objectValue;
+    }
     /*
      * 
      *The following was for trying to come up with a throwing animation thing

@@ -4,7 +4,12 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    [SerializeField] float _moveSpeed = 5f;
+    [SerializeField] float _moveSpeed;
+    [SerializeField] AudioClip _playerSpotted;
+    [SerializeField] AudioClip _uhOh;
+    [SerializeField] AudioClip _phew;
+    AudioSource _thisAudio;
+    ErrorMessagesScript _errorMessage;
     Player _player;
     Rigidbody2D _myRigidBody;
     List<Transform> _waypoints;
@@ -15,11 +20,17 @@ public class EnemyMovement : MonoBehaviour
     Transform _positionOfObjectToPursue;
     List<Transform> _objectsToPursue = new List<Transform>();
     Vector2 _enemyDirection;
+    static bool _hasSeenPlayer = false;
+    AudioControllerScript _audioControllerScript;
 
     void Start()
     {
-       // _player = FindObjectOfType<Player>();
+        _moveSpeed = Random.Range(4.0f, 6.0f);
+        // _player = FindObjectOfType<Player>();
+        _thisAudio = GetComponent<AudioSource>();
+        _errorMessage = FindObjectOfType<ErrorMessagesScript>();
         _myRigidBody = GetComponent<Rigidbody2D>();
+        _audioControllerScript = FindObjectOfType<AudioControllerScript>();
     }
 
     public void SetMoveSpeed(float movespeed)
@@ -73,10 +84,45 @@ public class EnemyMovement : MonoBehaviour
     {
         _positionOfObjectToPursue = objectPosition;
         _hasSeenObject = true;
-        Debug.Log("has seen object to pursue");
+        if (objectPosition.tag == "player")
+        {
+            Debug.Log(_hasSeenPlayer);
+            if (_hasSeenPlayer == false)
+            {
+                HasSeenPlayer(true);
+                _errorMessage.DisplayErrorMessage("Run! You have been spotted!", true);
+            }
+        }
     }
 
-    
+    public void HasSeenPlayer(bool hasSeenPlayer)
+    {
+        _hasSeenPlayer = hasSeenPlayer;
+        if (hasSeenPlayer == true)
+        {
+            _audioControllerScript.PlayerSpotted();
+            StartCoroutine(PlayerSpottedAudio());
+        }
+        else
+        {
+            _thisAudio.Stop();
+           _audioControllerScript.PlayerSafe();
+        }
+    }
+
+    private IEnumerator PlayerSpottedAudio()
+    {
+        if (!_thisAudio.isPlaying)
+        {
+            _thisAudio.clip = _uhOh;
+            _thisAudio.Play();
+            yield return new WaitForSeconds(0.7f);
+            _thisAudio.clip = _playerSpotted;
+            _thisAudio.Play();
+        }     
+    }
+
+
     public Vector2 GetEnemyVelocity()
     {
         return _enemyDirection;
@@ -92,6 +138,10 @@ public class EnemyMovement : MonoBehaviour
         else
         {
             _hasSeenObject = false;
+            if (_hasSeenPlayer == true)
+            {
+                HasSeenPlayer(false);
+            }
         }
         /*
         Debug.Log("Number of objects to pursue" + _objectsToPursue.Count);

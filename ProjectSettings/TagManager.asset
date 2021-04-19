@@ -10,6 +10,8 @@ TagManager:
   - money
   - cellphone
   - enemy
+  - finishline
+  - gameMusic
   layers:
   - Default
   - TransparentFX

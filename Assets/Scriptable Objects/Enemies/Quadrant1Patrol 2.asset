@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c78eb1f7513c4f4791728d3ff4b8d81, type: 3}
+  m_Name: Quadrant1Patrol 2
+  m_EditorClassIdentifier: 
+  _enemy: {fileID: -804810295662816256, guid: 5f8ad1dd93c4903488866263a4414093, type: 3}
+  _enemyPath: {fileID: 2186851941723320577, guid: 8dd8d854cb77f3a40aed8d0e9e63c667, type: 3}
+  _isLooping: 1

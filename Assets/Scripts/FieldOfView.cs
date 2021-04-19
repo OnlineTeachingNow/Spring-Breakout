@@ -53,6 +53,10 @@ public class FieldOfView : MonoBehaviour
                         GetComponent<EnemyMovement>().HasSeenObjectToPursue(_target);
                     }
                 }
+                else
+                {
+                  // FindObjectOfType<AudioControllerScript>().PlayerSafe();
+                }
             }
         }
     }

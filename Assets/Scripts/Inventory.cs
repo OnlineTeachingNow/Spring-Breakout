@@ -1,15 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class Inventory : MonoBehaviour
 {
     InventoryUI _inventoryUI;
+    ErrorMessagesScript _errorMessages;
+    MenuManager _menuManager;
+    int _points;
     Player _player;
+    int _itemValue;
     private List<string> _myInventory = new List<string>();
 
     private void Start()
     {
+        _errorMessages = FindObjectOfType<ErrorMessagesScript>();
+        _menuManager = FindObjectOfType<MenuManager>();
         _inventoryUI = FindObjectOfType<InventoryUI>();
         _player = FindObjectOfType<Player>();
     }
@@ -26,36 +33,49 @@ public class Inventory : MonoBehaviour
             }
             else
             {
-                Debug.Log("Already have this item.");
+                _errorMessages.DisplayErrorMessage("You already have this item.", false);
                 _pickedUpItem = false;
             }
         }
         else
         {
-            Debug.Log("Inventory Full. Please discard an item before picking another up");
+            _errorMessages.DisplayErrorMessage("Inventory Full. Please discard an item.", false);
             _pickedUpItem = false;
         }
-        
+        /*
         foreach (var item in _myInventory)
         {
             Debug.Log(item);
         }
+        */
         
         return _pickedUpItem;
     }
 
+    public void SetItemValue(int itemValue)
+    {
+        _itemValue = itemValue;
+    }
+
     public void DiscardItem(string discardTag)
     {
+        int _points = _menuManager.GetPoints();
         if (_myInventory.Count > 0)
         {
-            _player.ThrowObject(discardTag);
-            _inventoryUI.TakeAwayInventory(discardTag);
-            _myInventory.Remove(discardTag);
-
+            if (_points >= _itemValue)
+            {
+                _player.ThrowObject(discardTag);
+                _inventoryUI.TakeAwayInventory(discardTag);
+                _myInventory.Remove(discardTag);
+            }
+            else
+            {
+                _errorMessages.DisplayErrorMessage("Not enough points.", false);
+            }
         }
         else
         {
-            Debug.Log("There is no inventory to discard");
+            _errorMessages.DisplayErrorMessage("There are no items to discard", false);
         }
     }
 }

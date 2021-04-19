@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _enemy: {fileID: -804810295662816256, guid: 5f8ad1dd93c4903488866263a4414093, type: 3}
   _enemyPath: {fileID: 2759263905170895257, guid: 09dd621e1496d904db07e1ed504cceea, type: 3}
+  _isLooping: 1
